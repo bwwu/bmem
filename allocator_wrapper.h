@@ -6,7 +6,7 @@
 
 class AllocatorWrapper : public Allocator {
 public:
-	AllocatorWrapper(unsigned bytes);
+	AllocatorWrapper(int bytes);
 	void PrintMemState();
 };
 

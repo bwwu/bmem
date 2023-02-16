@@ -5,17 +5,17 @@
 #include <vector>
 
 struct Block {
-    unsigned block_size;
+    int block_size;
     void* start;
 
-    Block(unsigned block_size, void* start): block_size(block_size), start(start) {}
+    Block(int block_size, void* start): block_size(block_size), start(start) {}
 };
 
 class Allocator {
 public:
-    Allocator(unsigned bytes);
+    Allocator(int bytes);
     ~Allocator();
-    void* malloc(unsigned bytes);
+    void* malloc(int bytes);
     void free(void* ptr);
 
 protected:

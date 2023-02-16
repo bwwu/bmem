@@ -5,7 +5,7 @@
 #include "allocator_wrapper.h"
 
 
-AllocatorWrapper::AllocatorWrapper(unsigned bytes): Allocator(bytes) {}
+AllocatorWrapper::AllocatorWrapper(int bytes): Allocator(bytes) {}
 
 void PrintBlocks(void* startptr, const std::vector<Block*>& blocklist) {
 	int i = 0;

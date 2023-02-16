@@ -1,7 +1,8 @@
 #include "allocator.h"
 #include "assert.h"
 
-Allocator::Allocator(unsigned bytes) {
+
+Allocator::Allocator(int bytes) {
     memory = new uint8_t(bytes);
     freelist.push_back(new Block(bytes, memory));
 }
@@ -13,9 +14,9 @@ Allocator::~Allocator() {
     delete memory;
 }
 
-void* Allocator::malloc(unsigned bytes) {
+void* Allocator::malloc(int bytes) {
     auto it = freelist.begin();
-    Block* to_alloc;
+    Block* to_alloc = nullptr;
     while(it != freelist.end() && to_alloc == nullptr) {
         if ((*it)->block_size >= bytes) {
             to_alloc = *it;
@@ -27,7 +28,7 @@ void* Allocator::malloc(unsigned bytes) {
 
     if (to_alloc->block_size > bytes) {
         // Fragment blocks
-        auto new_block = new Block(to_alloc->block_size - bytes, to_alloc + bytes);
+        auto new_block = new Block(to_alloc->block_size - bytes, static_cast<uint8_t*>(to_alloc->start) + bytes);
         freelist.push_back(new_block);
     }
 
