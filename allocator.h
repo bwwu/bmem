@@ -20,6 +20,7 @@ public:
 
 private:
     std::vector<Block*> freelist;
+    std::vector<Block*> allocated;
     
     uint8_t* memory;
 };
