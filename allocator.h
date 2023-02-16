@@ -18,7 +18,7 @@ public:
     void* malloc(unsigned bytes);
     void free(void* ptr);
 
-private:
+protected:
     std::vector<Block*> freelist;
     std::vector<Block*> allocated;
     
